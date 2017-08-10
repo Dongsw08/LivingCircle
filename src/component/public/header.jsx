@@ -15,7 +15,6 @@ export class Header extends Component{
     }
 
    onMenuClick=()=>{
-        //console.log('youclick');
         this.setstate({open:!this.state.open});
         }
 
