@@ -6,15 +6,35 @@ import PropTypes from 'prop-types';
 
 
 export class Header extends Component{
-
-   onMenuClick = ()=>{
-        //console.log('youclick');
-        if(menuactive){
-            this.props.menuon = true;
-        }
+   constructor(props){
+       super(props);
+       this.state={
+           open:true,
+           
+        };
     }
 
+   onMenuClick=()=>{
+        //console.log('youclick');
+        this.setstate({open:!this.state.open});
+        }
+
+   onListClick=()=>{
+
+   }     
+    
+
     render(){
+       const arr=['电影','购物','关于'];
+       
+        const sidebar = arr.map((i,index)=>{
+            return(
+                <List>
+                    <List.Item key={index} onClick={this.onListClick} multipleLine>{i}</List.Item>
+                </List>
+            )
+        })
+
         return(
             <div>  
                 <NavBar iconName ={ null }
@@ -23,9 +43,9 @@ export class Header extends Component{
                 mode="dark"
                 onLeftClick={e => {
                     e.preventDefault()
-                    this.onMenuClick()
+                    this.onMenuClick
                     }}
-                >Movies</NavBar>
+                >{this.props.title}</NavBar>
             </div>
         )
         
