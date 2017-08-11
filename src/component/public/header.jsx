@@ -19,9 +19,20 @@ export class Header extends Component{
         this.setState({open:!this.state.open});
         }
 
-   onListClick=()=>{
+   onListClick(num){
        //this.setState{}
-
+       /*switch(index){
+           case 0 :
+           return ()=>{console.log(0);};
+           case 1 :
+           return ()=>{console.log(1);};
+           case 2 :
+           return ()=>{console.log(2);};
+           default :
+           break;
+       }*/
+      console.log(num);
+      this.setState({title:num});
    }     
     
     
@@ -29,9 +40,10 @@ export class Header extends Component{
        const arr=['电影','购物','关于'];
        
         const sidebar = arr.map((i,index)=>{
+            let num = i;
             return(
                 <List key={index}>
-                    <List.Item key={index} onClick={this.onListClick} multipleLine>{i}</List.Item>
+                    <List.Item key={index}  onClick={this.onListClick.bind(this,num)} multipleLine>{i}</List.Item>
                 </List>
             )
         });
@@ -46,7 +58,7 @@ export class Header extends Component{
                     //e.preventDefault()
                     this.onMenuClick
                     }
-                >dd</NavBar>
+                >{this.state.title}</NavBar>
                 <Drawer
                   className='my-drawer'
                   style={{ minHeight: document.documentElement.clientHeight - 200}}
