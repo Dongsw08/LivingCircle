@@ -148,6 +148,7 @@ module.exports = {
           /\.png$/,
           /\.less$/,
           /\.sass$/,
+          /\.scss$/,
         ],
         include: path.resolve(__dirname, '../src'),
         loader: require.resolve('file-loader'),
@@ -262,14 +263,23 @@ module.exports = {
         test:/\.scss$/,
         use: [
           require.resolve('style-loader'),
-          require.resolve('css-loader'),
+          {
+            loader: require.resolve('css-loader'),
+            options: {
+              sourcemap: true,
+              importLoaders: 2,
+            },
+          },
+          //require.resolve('css-loader'),
           {
             loader: require.resolve('postcss-loader'),
             options: {
               ident: 'postcss',
               plugins: ()=>[
+                require('postcss-flexbugs-fixes'),
                 autoprefixer({
                   browsers:['last 2 versions', 'Firefox ESR', '> 1%', 'ie >= 8', 'iOS >= 8', 'Android >= 4'],
+                  flexbox: 'no-2009',
                 }),
                 pxtorem({ rootValue: 100, propWhiteList: [] })
               ],

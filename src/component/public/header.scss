@@ -1,0 +1,14 @@
+.my-drawer{
+  position: relative;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  .am-drawer-sidebar{
+    background-color: #fff;
+    overflow:auto;
+    -webkit-overflow-scrolling:touch;
+    .am-list{
+      width: 6rem;
+      padding:0;
+    }
+  }
+}

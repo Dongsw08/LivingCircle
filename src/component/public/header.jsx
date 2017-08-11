@@ -3,7 +3,7 @@ import { NavBar , Drawer , List } from 'antd-mobile';
 //import { bindActionCreators } from 'redux';
 //import { connect } from 'react-redux';
 //import PropTypes from 'prop-types';
-import './header.css'
+import './header.scss'
 
 
 export class Header extends Component{
@@ -11,6 +11,7 @@ export class Header extends Component{
            super(props);
            this.state={
            open:false,
+           title:'电影',
            }
        }
 
@@ -19,6 +20,7 @@ export class Header extends Component{
         }
 
    onListClick=()=>{
+       //this.setState{}
 
    }     
     
