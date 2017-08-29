@@ -2,14 +2,9 @@ import React, { Component } from 'react';
 import  Header  from './component/public/header';
 import { BrowserRouter as Router , Route} from 'react-router-dom';
 import './layout/app.scss';
+import {MoviePage} from './container/moviepage.jsx';
 
-const MoviePage = () => 
-  <div className="zaizhong">
-    时代
-    <div className="hama">
-      水淀粉
-    </div>
-  </div>
+
 
 
 
@@ -18,10 +13,11 @@ class App extends Component {
     return (
       <Router>
         <div>
-           <Header />
-           <hr />
+           <Header content={
+             <Route exact path="/Movies" component={MoviePage} />
+           }/>
 
-           <Route exact path="/Movies" component={MoviePage} />
+           
         </div>
       </Router>
     );

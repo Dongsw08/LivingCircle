@@ -16,22 +16,16 @@ class Header extends Component{
            }
        }
 
-   onMenuClick=()=>{
+   onMenuClick=(e)=>{
+        e.preventDefault();
         this.setState({open:!this.state.open});
         }
 
+   onOpenchange = ()=>{
+       this.setState({open:!this.state.open});
+   }     
+
    onListClick(name){
-       //this.setState{}
-       /*switch(index){
-           case 0 :
-           return ()=>{console.log(0);};
-           case 1 :
-           return ()=>{console.log(1);};
-           case 2 :
-           return ()=>{console.log(2);};
-           default :
-           break;
-       }*/
       console.log(name);
       
       if(name === "电影"){
@@ -53,23 +47,6 @@ class Header extends Component{
        
         const sidebar = arr.map((i,index)=>{
             let name = i;
-            //let comp = '/movies';
-           /* switch (index){
-                case 0:
-                comp = "/movies";
-                break;
-                
-                case 1:
-                comp = "/shopping";
-                break;
-                
-                case 2:
-                comp = "/about";
-                break;
-                
-                default:
-                break;
-            }*/
             return(
                 <List key={index}>
                     <List.Item key={index}  onClick={this.onListClick.bind(this,name)} multipleLine>{i}</List.Item>
@@ -85,19 +62,18 @@ class Header extends Component{
                 rightContent="已购项目"
                 mode="dark"
                 onLeftClick={
-                    //e.preventDefault()
                     this.onMenuClick
                     }
                 >{this.state.title}</NavBar>
                 <Drawer
                   className='my-drawer'
-                  style={{ minHeight: document.documentElement.clientHeight - 200}}
+                  style={{ minHeight: document.documentElement.clientHeight}}
                   enableDraHandle
-                  contentStyle={{ color: '#A6A6A6', textAlign: 'center', paddingTop: 42 }}
+                  //contentStyle={{ color: '#A6A6A6', textAlign: 'center', paddingTop: 42 }}
                   sidebar={sidebar}
                   open={this.state.open}
-                  onOpenChange={this.onMenuClick}
-                ></Drawer>
+                  onOpenChange={this.onOpenchange}
+                >{this.props.content}</Drawer>
             </div>
         );
         
