@@ -39,7 +39,6 @@ export class MoviePage extends Component{
     
     let mockarr = [];
     mockarr.push(mov1,mov2,mov3,mov4);
-    console.log(mockarr);
     return mockarr;
   }
 
@@ -50,7 +49,7 @@ export class MoviePage extends Component{
   render(){
     let movarr = this.mockdata();
     let movdetail = movarr.map((curr,index)=>{
-     return <MovieContent img={curr} key={index} cb={this.popupopen} />
+     return <MovieContent src={curr.src} alt={curr.alt} title={curr.title} key={index}  />
     })
 
     return <div className="content">{movdetail}</div>

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import  Header  from './component/public/header';
 import { BrowserRouter as Router , Route} from 'react-router-dom';
 import './layout/app.scss';
-import {MoviePage} from './container/moviepage.jsx';
+import {MoviePage} from './pages/moviepage.jsx';
 
 
 

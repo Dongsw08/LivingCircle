@@ -1,5 +1,9 @@
-    .content{
-        overflow: visible;
+    .my-drawer{
+        margin: 0;
+        height: 100%;
+        .content{
+            margin-bottom: 1rem;
+        }
     }
     .moviePic{
         width: 100%;

@@ -1,15 +1,32 @@
-import React from 'react';
+import React ,{ Component }from 'react';
 import { Card, WingBlank, WhiteSpace,Button} from 'antd-mobile';
+import {bindActionCreators} from 'redux';
+import { connect } from 'react-redux';
 
 /*Components*/
-export const MovieContent = (img,cb,key) =>
-  <div onClick ={()=>console.log(img)} key={key}>
-   <WingBlank size='lg'>
-    <WhiteSpace size='lg' />
-      <Card>
-        <img className="moviePic" src={img.img.src} alt={img.img.alt} />
-        <Card.Header title={img.img.title} extra={<Button  type="primary" inline style={{ marginRight: '0.08rem' }}>购票</Button>} />
-      </Card>
+class MovieContent extends Component{
+  constructor(props){
+    super(props);
+    this.state={
+      popupopen:false,
+    }
+  }
 
-  </WingBlank>
+  componentDidMount() {
+    
+  }
+
+ render(){
+  return (
+  <div>
+     <WingBlank size='lg'>
+        <WhiteSpace size='lg' />
+          <Card>
+            <img className="moviePic" src={props.src} alt={props.alt} />
+            <Card.Header title={props.title} extra={<Button  type="primary" inline style={{ marginRight: '0.08rem' }}>购票</Button>} />
+          </Card>
+      </WingBlank>
   </div>
+  )
+ } 
+}
