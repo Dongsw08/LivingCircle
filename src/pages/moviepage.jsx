@@ -1,7 +1,8 @@
 import React,{ Component } from 'react';
+import 'whatwg-fetch';
 //import { connect } from 'react-redux';
 
-import { MovieContent } from '../component/moviecontent.jsx'
+import { MovieContent } from '../component/moviecontent.jsx';
 
 export class MoviePage extends Component{
   constructor(props){
@@ -13,26 +14,37 @@ export class MoviePage extends Component{
   
   mockdata() {
     //暂时模拟请求数据
+    fetch('http://localhost:3000/assets/moviedata.json')
+      .then(function(response){
+        return response.json();
+      }).then(function(json){
+        console.log('parese json',json);
+        console.log(json.movies[0]);
+      }).catch(function(e){
+        console.log('pasing falied',e);
+      })
+
+
     let mov1 = {
-      src:'https://img1.doubanio.com/view/photo/raw/public/p2460006579.jpg',
+      src:'http://127.0.0.1:3000/assets/p2460006579.jpg',
       alt:'神奇女侠',
       title:'神奇女侠'
     }
 
     let mov2 = {
-      src:'https://img1.doubanio.com/view/photo/raw/public/p2494950699.jpg',
+      src:'http://127.0.0.1:3000/assets/p2494950699.jpg',
       alt:'敦刻尔克',
       title:'敦刻尔克'
     }
 
     let mov3 = {
-      src:'https://img3.doubanio.com/view/photo/raw/public/p2492917405.jpg',
+      src:'http://127.0.0.1:3000/assets/p2492917405.jpg',
       alt:'十万个冷笑话',
       title:'十万个冷笑话'
     }
 
     let mov4 = {
-      src:'https://img1.doubanio.com/view/photo/raw/public/p2496794967.jpg',
+      src:'http://127.0.0.1:3000/assets/p2496795397.jpg',
       alt:'银魂',
       title:'银魂'
     }
