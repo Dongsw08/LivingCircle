@@ -1,0 +1,39 @@
+state={
+    currentPage: 'movie',
+    contents:{
+        movie:{
+            isFetching:false,
+            items:[
+                {
+                    "src":"http://127.0.0.1:3000/assets/p2460006579.jpg",
+                    "alt":"神奇女侠",
+                    "title":"神奇女侠"
+                },
+                {
+                    "src":"http://127.0.0.1:3000/assets/p2494950699.jpg",
+                    "alt":"敦刻尔克",
+                    "title":"敦刻尔克"
+                },
+                {
+                    "src":"http://127.0.0.1:3000/assets/p2492917405.jpg",
+                    "alt":"十万个冷笑话2",
+                    "title":"十万个冷笑话2"
+                },
+                {
+                    "src":"http://127.0.0.1:3000/assets/p2496795397.jpg",
+                    "alt":"银魂",
+                    "title":"银魂"
+                }
+            ]
+        },
+        shopping:{
+            isFetching:false,
+            items:[]
+        },
+        cart:{
+            movies:[],
+            shopping:[],
+            
+        }
+    }
+}
