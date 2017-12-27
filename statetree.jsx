@@ -1,6 +1,6 @@
 state={
     currentPage: 'movie',
-    contents:{
+    contents:{   
         movie:{
             isFetching:false,
             items:[
@@ -29,11 +29,73 @@ state={
         shopping:{
             isFetching:false,
             items:[]
-        },
-        cart:{
-            movies:[],
-            shopping:[],
-            
+        }
+    },
+       cartItems:[
+           {page:movie}
+       ]
+             
+}
+
+
+
+const getcontents = (state={
+    isFetching:false,
+    items:[]
+},action)=>{
+    switch(action.type){
+        case REQUEST_CONTENT:
+        return{
+            ...state,
+            isFetching:true
+        }
+
+        case RECIVE_CONTENT:
+        return{
+            isFetching:false,
+            items:action.items
         }
     }
+}
+
+
+
+const contents = (state={ },action)=>{
+    switch(action.type){
+        case RECIVE_CONTENT:
+        case REQUEST_CONTENT:
+        {
+            return {
+                [action.page]:getcontents()
+            }
+        }
+    }
+}
+
+const cartItems = (state={ },action)=>{
+    switch(action.type){
+        case RENDER_TO_CART:{
+            return{
+                ...state,
+                [action.page]:{
+                    [action.selctitem]:action.num
+                }
+            }
+        }
+    }
+}
+
+var cart = {
+    movies:[{title:'神奇女侠',num:1},{title:'都是',num:2}],
+    shopping:[{title:'白菜',num:1},{title:'带带',num:5}]
+}
+
+var action = {
+    page:movies,
+    title:'神奇女侠',
+    num:6
+}
+
+function updateCart(state,action){
+    
 }

@@ -7,12 +7,9 @@ import { Card, WingBlank, WhiteSpace,Button} from 'antd-mobile';
 export class MovieContent extends Component{
   constructor(props){
     super(props);
-    this.state={
-      popupopen:false,
-    }
   }
 
-  componentDidMount() {
+  handleclick(){
     
   }
 
@@ -23,7 +20,7 @@ export class MovieContent extends Component{
         <WhiteSpace size='lg' />
           <Card>
             <img className="moviePic" src={this.props.src} alt={this.props.alt} />
-            <Card.Header title={this.props.title} extra={<Button  type="primary" inline style={{ marginRight: '0.08rem' }}>购票</Button>} />
+            <Card.Header title={this.props.title} extra={<Button  type="primary" inline onClick={this.handleclick} style={{ marginRight: '0.08rem' }}>购票</Button>} />
           </Card>
       </WingBlank>
   </div>
