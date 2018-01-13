@@ -28,7 +28,7 @@ export class MovieContent extends Component{
  } 
 }*/
 
-export const MovieContent = ({props}) => {
+export const MovieContent = (props) => {
   const {title, src, alt, handleBuyClick} = props;
   return(
     <div>

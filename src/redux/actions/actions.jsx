@@ -57,9 +57,9 @@ export const removeFromCart = (productId,currentNum) => dispatch =>{
     }
 }
 
-export const fetchContent = (page)=>
+export const fetchContent = page =>
     dispatch => {
-        dispatch(requestData);
+        dispatch(requestData(page));
         return fetch(`http://localhost:3000/assets/${page}.json`)
         .then(response=>response.json())
         .then(json => dispatch(reciveData(page,json)))

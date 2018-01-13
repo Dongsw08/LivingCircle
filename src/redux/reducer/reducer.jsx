@@ -34,7 +34,7 @@ const idInCart = (state=[ ],action) => {
     }
 }
 
-const amountInCart = (state={ },action)=>{    
+const amountInCart = (state={ },action) => {    
     switch(action.type){
         case RENDER_TO_CART:
         {
