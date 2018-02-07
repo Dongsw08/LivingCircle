@@ -11,20 +11,30 @@ const changeCurrentPage = (state='movie',action) => {
     }
 }
 /*购物车 */
-const idInCart = (state=[ ],action) => {
-    let index = state.indexOf(action.id);
+const idInCart = (state={ },action) => {
+    //let index = state.indexOf(action.id);
     switch(action.type){
         case RENDER_TO_CART:
         {
-            if(index !== -1){
+           /*if(index !== -1){
                 return state;
             }
-            return [...state,action.id];
+            return [...state,action.id];*/ 
+            return{
+                ...state,
+                [action.id]:{title:action.selectitem,price:action.price}
+            }
+
         }
 
         case REMOVE_FROM_CART:
         {
-           return state.fliter(id => id !== action.id);
+            let newState = {...state};
+            if(state.hasOwnProperty(action.id)){
+                delete newState[action.id];
+            }
+
+            return newState;
         }
 
         default: return state;

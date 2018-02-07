@@ -16,7 +16,7 @@ class CartPage extends Component{
 }
 
 const getCartitems = state => {
-    const { amountInCart } = state;
+    const { idInCart } = state;
     let items = [];
     for(let item in amountInCart){
         items.push(item);
@@ -26,7 +26,7 @@ const getCartitems = state => {
 
 const getTotal = state => {
     const { amountInCart, idInCart } = state;
-    
+
 }
 
 const mapStateToProps = state => ({

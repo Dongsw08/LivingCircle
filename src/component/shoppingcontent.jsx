@@ -6,13 +6,13 @@ export const ShoppingContent = (props) => {
 
     const fruitDetail = fruit.map(
         (fru) => {
-            return <List.Item key={fru.id} extra={<Button type="primary" inline onClick={handleBuyClick.bind(this,'fruit',fru.title,fru.id)} style={{ marginRight: '0.08rem' }}>购买</Button>}>{fru.title}</List.Item>
+            return <List.Item key={fru.id} extra={<Button type="primary" inline onClick={handleBuyClick.bind(this,'fruit',fru.title,fru.price,fru.id)} style={{ marginRight: '0.08rem' }}>购买</Button>}>{fru.title}</List.Item>
         }
     )
 
     const clothesDetail = clothes.map(
         (clo) => {
-            return <List.Item key={clo.id} extra={<Button type="primary" inline onClick={handleBuyClick.bind(this,'clothes',clo.title,clo.id)} style={{ marginRight: '0.08rem' }}>购买</Button>}>{clo.title}</List.Item>
+            return <List.Item key={clo.id} extra={<Button type="primary" inline onClick={handleBuyClick.bind(this,'clothes',clo.title,clo.price,clo.id)} style={{ marginRight: '0.08rem' }}>购买</Button>}>{clo.title}</List.Item>
         }
     )
   /* */  return (

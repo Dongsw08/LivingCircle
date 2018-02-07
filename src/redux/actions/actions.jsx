@@ -32,12 +32,13 @@ export const reciveData = (page,data) =>({
     items:data
 })
 
-export const renderToCart = (page,selectitem,id) =>({
+export const renderToCart = (page,selectitem,price,id) =>({
     //let currentpage = page.toUpperCase();
     //type:`RENDER_${currentpage}_TO_CART`,
     type:RENDER_TO_CART,
     page,
     selectitem,
+    price,
     id
 })
 

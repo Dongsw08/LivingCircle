@@ -6,9 +6,9 @@ import { Toast } from 'antd-mobile';
 
 
 class ShoppingPage extends Component{
-   handleBuyClick = (page,title,id) => {
+   handleBuyClick = (page,title,price,id) => {
        const { dispatch } = this.props;
-       dispatch(renderToCart(page,title,id));
+       dispatch(renderToCart(page,title,price,id));
        Toast.success('购买成功',1);
    }
    
