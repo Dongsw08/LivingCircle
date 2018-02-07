@@ -2,9 +2,10 @@ import React , { Component } from 'react';
 import { NavBar , Drawer , List } from 'antd-mobile';
 import { withRouter } from 'react-router-dom';
 //import { bindActionCreators } from 'redux';
-//import { connect } from 'react-redux';
+import { connect } from 'react-redux';
 //import PropTypes from 'prop-types';
-import './header.scss'
+import './header.scss';
+import { selectCurrentPage } from '../../redux/actions/actions.jsx';
 
 
 class Header extends Component{
@@ -12,9 +13,44 @@ class Header extends Component{
            super(props);
            this.state={
            open:false,
-           title:'电影',
+           title:'',
            }
        }
+
+   componentWillMount() {
+       const { location:{ pathname }, dispatch } = this.props;
+       let currentPath = pathname.replace("/","").toLowerCase();
+      switch(currentPath){
+           case "movies":{
+               this.setState({title:"电影"});
+               dispatch(selectCurrentPage('movie'));
+               break;
+           }
+
+           case "shopping":{
+            this.setState({title:"购物"});
+            dispatch(selectCurrentPage('shopping'));
+            break;
+           }
+
+           case "cart":{
+            this.setState({title:"购物车"});
+            dispatch(selectCurrentPage('cart'));
+            break;
+           }
+
+           case "about":{
+            this.setState({title:"关于"});
+            dispatch(selectCurrentPage('about'));
+            break;
+           }
+
+           default:{
+            this.setState({title:"电影"});
+            dispatch(selectCurrentPage('movie'));
+           }
+       } 
+   } 
 
    onMenuClick=(e)=>{
         e.preventDefault();
@@ -27,15 +63,23 @@ class Header extends Component{
 
    onListClick(name){
       console.log(name);
-      
+      const { dispatch } = this.props;
+
       if(name === "电影"){
-        this.props.history.push("/Movies");
+        this.props.history.push("/movies");
+        dispatch(selectCurrentPage('movie'));
+        this.setState({open:!this.state.open});
       }else if(name === "购物"){
-        this.props.history.push("/Shopping");
+        this.props.history.push("/shopping");
+       dispatch(selectCurrentPage('shopping'));
+       this.setState({open:!this.state.open});
       }else if(name === "关于"){
-        this.props.history.push("/About");
+        this.props.history.push("/about");
+       dispatch(selectCurrentPage('about'));
+       this.setState({open:!this.state.open});
       }
       this.setState({title:name});
+     
 
       
    }     
@@ -67,9 +111,9 @@ class Header extends Component{
                 >{this.state.title}</NavBar>
                 <Drawer
                   className='my-drawer'
-                  style={{ minHeight: document.documentElement.clientHeight}}
+                  style={{ minHeight: document.documentElement.clientHeight - 200 }}
                   enableDraHandle
-                  //contentStyle={{ color: '#A6A6A6', textAlign: 'center', paddingTop: 42 }}
+                  contentStyle={{ height:'auto' }}
                   sidebar={sidebar}
                   open={this.state.open}
                   onOpenChange={this.onOpenchange}
@@ -80,4 +124,5 @@ class Header extends Component{
         }
 }
 
-export default withRouter(Header);  
+
+export default withRouter(connect()(Header));  

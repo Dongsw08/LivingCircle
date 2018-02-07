@@ -1,20 +1,24 @@
 .my-nav-content{
   position: fixed;
+  height: auto;
   width: 100%;
-  z-index: 9999;
+  z-index: 999;
 }
 
 .my-drawer{
   position: relative;
-  overflow: auto;
+  //padding-bottom: 1rem;
   -webkit-overflow-scrolling: touch;
   .am-drawer-sidebar{
     background-color: #fff;
-    overflow:auto;
     -webkit-overflow-scrolling:touch;
     .am-list{
       width: 6rem;
       padding:0;
+    }
+    .content{
+      position: relative;
+      overflow: auto;
     }
   }
 }

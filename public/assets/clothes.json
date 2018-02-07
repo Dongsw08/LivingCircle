@@ -1,0 +1,20 @@
+[
+    {
+        "id": "cl1",
+        "title": "T-shirt",
+        "price": 30,
+        "inventory": 10
+    },
+    {
+        "id": "cl2",
+        "title": "牛仔裤",
+        "price": 299,
+        "inventory": 6
+    },
+    {
+        "id": "cl3",
+        "title": "运动鞋",
+        "price": 399,
+        "inventory": 8
+    }
+]

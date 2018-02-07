@@ -4,7 +4,7 @@
 //export const RECIVE_MOVIE = 'RECIVE_MOVIE';
 //export const RECIVE_SHOPPING = 'RECIVE_SHOPPING';
 
-import fetch from 'whatwg-fetch';
+
 
 export const REQUEST_DATA = 'REQUEST_DATA';
 export const RECIVE_DATA = 'RECIVE_DATA';
@@ -29,16 +29,16 @@ export const requestData = page =>({
 export const reciveData = (page,data) =>({
     type:RECIVE_DATA,
     page,
-    items:data.movies
+    items:data
 })
 
-export const renderToCart = (page,selectitem,num) =>({
+export const renderToCart = (page,selectitem,id) =>({
     //let currentpage = page.toUpperCase();
     //type:`RENDER_${currentpage}_TO_CART`,
     type:RENDER_TO_CART,
     page,
     selectitem,
-    num
+    id
 })
 
 export const decreaseFromCart = (productId) => dispatch => ({
@@ -57,12 +57,12 @@ export const removeFromCart = (productId,currentNum) => dispatch =>{
     }
 }
 
-export const fetchContent = page =>
+export const fetchContent = item =>
     dispatch => {
-        dispatch(requestData(page));
-        return fetch(`http://localhost:3000/assets/${page}.json`)
+        dispatch(requestData(item));
+        return fetch(`http://localhost:8090/assets/${item}.json`)
         .then(response=>response.json())
-        .then(json => dispatch(reciveData(page,json)))
+        .then(json => dispatch(reciveData(item,json)))
     }
 
 

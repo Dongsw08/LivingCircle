@@ -4,7 +4,10 @@ import { combineReducers } from 'redux';
 const changeCurrentPage = (state='movie',action) => {
     switch(action.type){
         case CHANGE_CURRENT_PAGE:
+        {
             return action.page;
+        }  
+        default: return state;    
     }
 }
 /*购物车 */
@@ -13,24 +16,18 @@ const idInCart = (state=[ ],action) => {
     switch(action.type){
         case RENDER_TO_CART:
         {
-            if(index !==-1){
+            if(index !== -1){
                 return state;
-            }else{
-                return [...state,action.id];
             }
+            return [...state,action.id];
         }
 
         case REMOVE_FROM_CART:
         {
-            if(index !==-1){
-                let newState = [...state];
-                newState.splice(index,1);
-                return newState;
-            }
+           return state.fliter(id => id !== action.id);
         }
 
-        default:
-        return state;
+        default: return state;
     }
 }
 
@@ -40,7 +37,7 @@ const amountInCart = (state={ },action) => {
         {
             return {
                 ...state,
-                [state.id]: (state[action.id] || 0) + action.num
+                [action.id]: (state[action.id] || 0) + 1
             }
         }
 
@@ -53,12 +50,16 @@ const amountInCart = (state={ },action) => {
         }
 
         case REMOVE_FROM_CART:
-        {
+        {   
+            let newState = {...state};
             if(state.hasOwnProperty(action.id)){
-                let newState = {...state};
                 delete newState[action.id];
             }
+
+            return newState;
         }
+
+        default: return state;
     }
 }
 
@@ -81,8 +82,9 @@ const addToContent = (state={
             isFetching:false,
             items:action.items
         }
+
+        default: return state;
     }
-    
 }
 
 const content = (state={ },action)=>{
@@ -93,5 +95,16 @@ const content = (state={ },action)=>{
             ...state,
             [action.page]:addToContent(state[action.page],action)
         }
+
+        default: return state;
     }
 }
+
+const reducers = combineReducers({
+    changeCurrentPage,
+    idInCart,
+    amountInCart,
+    content    
+})
+
+export default reducers;

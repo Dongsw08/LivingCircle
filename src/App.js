@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import  Header  from './component/public/header';
 import { BrowserRouter as Router , Route , Redirect ,Switch} from 'react-router-dom';
 import './layout/app.scss';
-import {MoviePage} from './pages/moviepage.jsx';
+import MoviePage from './pages/moviepage.jsx';
+import  ShoppingPage   from './pages/shoppingpage.jsx';
 
 
 
@@ -16,8 +17,9 @@ class App extends Component {
            <Header content={
               <div>
               <Switch> 
-                <Redirect exact from="/" to="/Movies"  /> 
-                <Route exact path="/Movies" component={MoviePage} />
+                <Redirect exact from="/" to="/movies"  /> 
+                <Route exact path="/movies" component={MoviePage} />
+                <Route exact path="/shopping" component={ShoppingPage} />
                 <Route component={Nomatch} />
                </Switch> 
               </div> 

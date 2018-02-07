@@ -1,0 +1,47 @@
+{
+    "items": [
+        {
+            "title": "水果",
+            "item": [
+                {
+                    "id": "fr1",
+                    "title": "苹果",
+                    "price": 2
+                },
+                {
+                    "id": "fr2",
+                    "title": "香蕉",
+                    "price": 3
+                },
+                {
+                    "id": "fr3",
+                    "title": "菠萝",
+                    "price": 4
+                }
+            ]
+        },
+        {
+            "title": "服饰",
+            "item": [
+                {
+                    "id": "cl1",
+                    "title": "T-shirt",
+                    "price": 30,
+                    "inventory": 10
+                },
+                {
+                    "id": "cl2",
+                    "title": "牛仔裤",
+                    "price": 299,
+                    "inventory": 6
+                },
+                {
+                    "id": "cl3",
+                    "title": "运动鞋",
+                    "price": 399,
+                    "inventory": 8
+                }
+            ]
+        }
+    ]
+}
