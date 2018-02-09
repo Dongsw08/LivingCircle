@@ -15,6 +15,8 @@ export const CHANGE_CURRENT_PAGE = 'CHANGE_CURRENT_PAGE';
 export const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
 export const DECREASE_FROM_CART = 'DECREASE_FROM_CART';
 
+export const CHECKOUT = 'CHECKOUT';
+
 export const selectCurrentPage = page =>({
     type: CHANGE_CURRENT_PAGE,
     page
@@ -66,4 +68,6 @@ export const fetchContent = item =>
         .then(json => dispatch(reciveData(item,json)))
     }
 
-
+export const checkout = () => ({
+    type:CHECKOUT
+})

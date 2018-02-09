@@ -4,7 +4,8 @@ import { BrowserRouter as Router , Route , Redirect ,Switch} from 'react-router-
 import './layout/app.scss';
 import MoviePage from './pages/moviepage.jsx';
 import  ShoppingPage   from './pages/shoppingpage.jsx';
-
+import Cartpage from './pages/cartpage.jsx';
+import { About } from './pages/about.jsx';
 
 
 
@@ -20,6 +21,8 @@ class App extends Component {
                 <Redirect exact from="/" to="/movies"  /> 
                 <Route exact path="/movies" component={MoviePage} />
                 <Route exact path="/shopping" component={ShoppingPage} />
+                <Route exact path="/cart" component={Cartpage} />
+                <Route exact path="/about" component={About} />
                 <Route component={Nomatch} />
                </Switch> 
               </div> 
@@ -30,7 +33,7 @@ class App extends Component {
   }
 }
 
-const Nomatch = ()=><div><br/><br/><br/>没有asjflsjaklfsdajlfjsdlkfjdslkfjaslfakjasdlfjdslfjsdlkfjdsalfasflksl</div>
+const Nomatch = ()=><div><br/><br/><br/>Nothing here</div>
 
 
 export default App;

@@ -1,4 +1,4 @@
-import { REQUEST_DATA, RECIVE_DATA, RENDER_TO_CART, CHANGE_CURRENT_PAGE, REMOVE_FROM_CART, DECREASE_FROM_CART } from '../actions/actions.jsx';
+import { REQUEST_DATA, RECIVE_DATA, RENDER_TO_CART, CHANGE_CURRENT_PAGE, REMOVE_FROM_CART, DECREASE_FROM_CART,CHECKOUT } from '../actions/actions.jsx';
 import { combineReducers } from 'redux';
 
 const changeCurrentPage = (state='movie',action) => {
@@ -37,6 +37,11 @@ const idInCart = (state={ },action) => {
             return newState;
         }
 
+        case CHECKOUT:
+        {
+            return {};
+        }
+
         default: return state;
     }
 }
@@ -67,6 +72,11 @@ const amountInCart = (state={ },action) => {
             }
 
             return newState;
+        }
+
+        case CHECKOUT:
+        {
+            return {}
         }
 
         default: return state;

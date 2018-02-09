@@ -17,7 +17,7 @@ class MoviePage extends Component{
     const { items } = this.props;
 
     let movdetail = items.map((mov) =>{
-     return <MovieContent src={mov.src} alt={mov.alt} title={mov.title} key={mov.id} handleBuyClick={this.handleBuyClick.bind(this,'movies',mov.title,mov.price,mov.id)}/>
+     return <MovieContent src={mov.src} alt={mov.alt} title={mov.title} key={mov.id} price={mov.price} handleBuyClick={this.handleBuyClick.bind(this,'movies',mov.title,mov.price,mov.id)}/>
     })
 
     return <div className="content">{movdetail}</div>

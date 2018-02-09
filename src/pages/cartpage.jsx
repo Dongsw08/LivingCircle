@@ -1,37 +1,45 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { List,Button } from 'antd-mobile;'
+import { Cart } from '../component/cart.jsx';
+import { checkout } from '../redux/actions/actions.jsx'
 
 class CartPage extends Component{
+    checkout = () => {
+        const { dispatch } = this.props;
+
+        dispatch(checkout());
+    }
+
     render(){
+        const { idInCart,amountInCart,total } = this.props;
+
+        return(
         <div>
-            <List renderHeader={'购物车'} className="cartlist">
-                
-            </List>
-            <List renderHeader={'总价'} className="cartlist">
-                
-            </List>
+            <Cart idInCart={idInCart} amountInCart={amountInCart} total={total} checkout={this.checkout} />
         </div>
+        )
     }
 }
 
-const getCartitems = state => {
-    const { idInCart } = state;
-    let items = [];
-    for(let item in amountInCart){
-        items.push(item);
+
+const getTotal = (idInCart,amountInCart) => {
+   let total = 0;
+    if(idInCart || amountInCart !== {} || { }){
+        for(let id in amountInCart){
+            total += idInCart[id].price * amountInCart[id];
+        }
     }
-    return items;
+
+    return total;
 }
 
-const getTotal = state => {
-    const { amountInCart, idInCart } = state;
-
+const mapStateToProps = state => {
+    const { idInCart,amountInCart } = state;
+    return {
+        idInCart,
+        amountInCart,
+        total:getTotal(idInCart,amountInCart)
+    }    
 }
 
-const mapStateToProps = state => ({
-    items:getCartitems(state),
-    total:getTotal(state)    
-})
-
-export default connect()(CartPage);
+export default connect(mapStateToProps)(CartPage);

@@ -71,8 +71,12 @@ class Header extends Component{
         this.setState({open:!this.state.open});
       }else if(name === "购物"){
         this.props.history.push("/shopping");
-       dispatch(selectCurrentPage('shopping'));
-       this.setState({open:!this.state.open});
+        dispatch(selectCurrentPage('shopping'));
+        this.setState({open:!this.state.open});
+      }else if(name === '已购买'){
+        this.props.history.push("/cart");
+        dispatch(selectCurrentPage('cart'));
+        this.setState({open:!this.state.open});
       }else if(name === "关于"){
         this.props.history.push("/about");
        dispatch(selectCurrentPage('about'));
@@ -87,7 +91,7 @@ class Header extends Component{
     
     render(){
         //菜单内容
-       const arr=['电影','购物','关于'];
+       const arr=['电影','购物','已购买','关于'];
        
         const sidebar = arr.map((i,index)=>{
             let name = i;
@@ -103,7 +107,6 @@ class Header extends Component{
                 <NavBar iconName ={ null }
                 className="my-navbar"
                 leftContent="菜单"
-                rightContent="已购项目"
                 mode="dark"
                 onLeftClick={
                     this.onMenuClick
