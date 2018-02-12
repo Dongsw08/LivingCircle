@@ -1,12 +1,12 @@
 import React from 'react'
-import { List,Button } from 'antd-mobile'
+import { List, Button, Stepper } from 'antd-mobile'
 
-export const Cart = ({idInCart,total,amountInCart,checkout}) => {
+export const Cart = ({idInCart,total,amountInCart,checkout,onChange}) => {
     let cartContent = []
     if(total !== 0){
         for(let id in amountInCart){
             cartContent.push(
-                <List.Item key = {id} extra={`X ${amountInCart[id]}`}>
+                <List.Item key = {id} extra={<Stepper style={{ width: '100%', minWidth: '2rem' }} showNumber value={amountInCart[id]} onChange={onChange.bind(this,id)} useTouch={false} />}>
                     {idInCart[id].title}
                 </List.Item>
             )

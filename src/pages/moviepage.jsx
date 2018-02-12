@@ -10,7 +10,7 @@ class MoviePage extends Component{
   handleBuyClick = (page,selectitem,price,id) =>{
     const { dispatch } = this.props;
     dispatch(renderToCart(page,selectitem,price,id))
-    Toast.success('购买成功',1);
+    Toast.success('购买成功',1,null,false);
   }
 
   render(){

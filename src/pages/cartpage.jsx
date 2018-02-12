@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Cart } from '../component/cart.jsx';
-import { checkout } from '../redux/actions/actions.jsx'
+import { checkout, decreaseFromCart } from '../redux/actions/actions.jsx'
 
 class CartPage extends Component{
     checkout = () => {
@@ -10,12 +10,17 @@ class CartPage extends Component{
         dispatch(checkout());
     }
 
+    onChange = (id,currentnum) => {
+        const { dispatch } = this.props;
+        dispatch(decreaseFromCart(id,currentnum));
+    }
+
     render(){
         const { idInCart,amountInCart,total } = this.props;
 
         return(
         <div>
-            <Cart idInCart={idInCart} amountInCart={amountInCart} total={total} checkout={this.checkout} />
+            <Cart idInCart={idInCart} amountInCart={amountInCart} total={total} checkout={this.checkout} onChange={this.onChange} />
         </div>
         )
     }

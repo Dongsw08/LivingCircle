@@ -44,26 +44,30 @@ export const renderToCart = (page,selectitem,price,id) =>({
     id
 })
 
-export const decreaseFromCart = (productId) => dispatch => ({
-    type:DECREASE_FROM_CART,
+export const removeFromCart = (productId) => ({
+    type:REMOVE_FROM_CART,
     id:productId
 })
 
-export const removeFromCart = (productId,currentNum) => dispatch =>{
-    if(currentNum > 0){
-        return {
-            type:REMOVE_FROM_CART,
-            id:productId
-        }
+export const decreaseFromCart = (productId,currentNum) => ({
+    type:DECREASE_FROM_CART,
+    id:productId,
+    num:currentNum
+})
+
+
+export const changeAmount = (productId,currentNum) => dispatch =>{
+    if(currentNum <= 0){
+        dispatch(removeFromCart(productId));
     }else{
-        dispatch(decreaseFromCart(productId));
+        dispatch(decreaseFromCart(productId,currentNum));
     }
 }
-
+ 
 export const fetchContent = item =>
     dispatch => {
         dispatch(requestData(item));
-        return fetch(`http://localhost:8090/assets/${item}.json`)
+        fetch(`http://localhost:8090/assets/${item}.json`)
         .then(response=>response.json())
         .then(json => dispatch(reciveData(item,json)))
     }

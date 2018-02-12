@@ -60,7 +60,7 @@ const amountInCart = (state={ },action) => {
         {
             return{
                 ...state,
-                [state.id]: state[action.id] - 1
+                [action.id]: action.num
             }
         }
 
